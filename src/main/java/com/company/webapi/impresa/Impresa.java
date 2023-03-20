@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -28,10 +26,7 @@ public class Impresa {
 	private Integer id;
 	private String codice;
 	private Boolean isActive;
-	@OneToMany(
-			mappedBy = "impresa",
-			cascade = CascadeType.ALL,
-			orphanRemoval = true
-	)
-	private List<ImpresaAnno> lstImpresaAnno = new ArrayList<>();
+	@OneToMany(mappedBy = "impresa")
+	private List<ImpresaAnno> lstImpresaAnno;
+
 }

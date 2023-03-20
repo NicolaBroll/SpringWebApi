@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Data
 @Builder
@@ -23,8 +24,10 @@ public class ImpresaAnno {
 			generator = "impresaAnno_id_sequence"
 	)
 	private Integer id;
-	private Impresa impresa;
 	private Integer anno;
 	private String ragioneSociale;
 
+	@JsonBackReference
+	@ManyToOne
+	private Impresa impresa;
 }
