@@ -1,11 +1,7 @@
 package com.company.webapi.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.Collection;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -24,10 +20,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "_user")
 public class User implements UserDetails {
 
-	private static final long serialVersionUID = 1L;
-
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(
+			name = "user_id_sequence",
+			sequenceName = "user_id_sequence"
+	)
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "user_id_sequence"
+	)
 	private Integer id;
 	private String firstname;
 	private String lastname;

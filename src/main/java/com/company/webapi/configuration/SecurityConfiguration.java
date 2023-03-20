@@ -25,6 +25,8 @@ public class SecurityConfiguration {
 			.authorizeHttpRequests()
 			.requestMatchers("/api/v1/auth/**")
 			.permitAll()
+			.requestMatchers("/h2-console/**")
+			.permitAll()
 			.anyRequest()
 			.authenticated()
 			.and()
