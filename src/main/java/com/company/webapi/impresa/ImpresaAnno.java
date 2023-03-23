@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Data
 @Builder
@@ -15,19 +14,16 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class ImpresaAnno {
 
 	@Id
-	@SequenceGenerator(
-			name = "impresaAnno_id_sequence",
-			sequenceName = "impresa_id_sequence"
-	)
 	@GeneratedValue(
 			strategy = GenerationType.SEQUENCE,
 			generator = "impresaAnno_id_sequence"
 	)
+	@SequenceGenerator(
+			name = "impresaAnno_id_sequence",
+			sequenceName = "impresaAnno_id_sequence",
+			allocationSize = 1
+	)
 	private Integer id;
 	private Integer anno;
 	private String ragioneSociale;
-
-	@JsonBackReference
-	@ManyToOne
-	private Impresa impresa;
 }

@@ -15,18 +15,25 @@ import java.util.List;
 public class Impresa {
 
 	@Id
-	@SequenceGenerator(
-			name = "impresa_id_sequence",
-			sequenceName = "impresa_id_sequence"
-	)
 	@GeneratedValue(
 			strategy = GenerationType.SEQUENCE,
 			generator = "impresa_id_sequence"
 	)
+	@SequenceGenerator(
+			name = "impresa_id_sequence",
+			sequenceName = "impresa_id_sequence",
+			allocationSize = 1
+	)
 	private Integer id;
-	private String codice;
+	//private String codice;
 	private Boolean isActive;
-	@OneToMany(mappedBy = "impresa")
+	@OneToMany(
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+	)
+	@JoinColumn(
+			name = "impresa_id"
+	)
 	private List<ImpresaAnno> lstImpresaAnno;
 
 }

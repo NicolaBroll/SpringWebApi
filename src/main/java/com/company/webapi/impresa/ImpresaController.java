@@ -16,7 +16,7 @@ public class ImpresaController {
 
  	@GetMapping()
 	private List<Impresa> get() {
-		return impresaRepository.findAll();
+		return impresaRepository.findAllNew();
 	}
 
 }
