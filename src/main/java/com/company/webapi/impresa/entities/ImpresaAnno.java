@@ -1,4 +1,4 @@
-package com.company.webapi.impresa;
+package com.company.webapi.impresa.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,10 +1,12 @@
-package com.company.webapi.impresa;
+package com.company.webapi.impresa.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.FetchMode;
+
 import java.util.List;
 
 @Data
@@ -25,8 +27,8 @@ public class Impresa {
 			allocationSize = 1
 	)
 	private Integer id;
-	//private String codice;
 	private Boolean isActive;
+
 	@OneToMany(
 			cascade = CascadeType.ALL,
 			orphanRemoval = true
