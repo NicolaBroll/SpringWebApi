@@ -6,6 +6,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,7 +22,28 @@ import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
+/*
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Object> handleMethodArgumentNotValidException(
+            MethodArgumentNotValidException ex, WebRequest request) {
 
+        Map<String, String> errors = new LinkedHashMap<>();
+
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+
+        Map<String, Object> body = new LinkedHashMap<>();
+
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", ex.getMessage());
+        body.put("errors", errors);
+
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+*/
     @ExceptionHandler(ImpresaNotFoundException.class)
     public ResponseEntity<Object> handleImpresaNotFoundException(
             ImpresaNotFoundException ex, WebRequest request) {

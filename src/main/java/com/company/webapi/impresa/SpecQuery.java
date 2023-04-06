@@ -5,6 +5,6 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class SpecQuery{
     static Specification<Impresa> isActive(boolean isActive) {
-        return (book, cq, cb) -> cb.equal(book.get("isActive"), isActive);
+        return (impresa, cq, cb) -> cb.equal(impresa.get("isActive"), isActive);
     }
 }

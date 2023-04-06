@@ -1,8 +1,11 @@
 package com.company.webapi.impresa;
 
 import com.company.webapi.impresa.dtos.ImpresaDTO;
+import com.company.webapi.impresa.entities.Impresa;
 import com.company.webapi.impresa.mappers.ImpresaDTOMapper;
 import com.company.webapi.impresa.exceptions.ImpresaNotFoundException;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
@@ -22,21 +25,28 @@ public class ImpresaController {
 	private final ImpresaDTOMapper impresaDTOMapper;
 
  	@GetMapping()
-	private List<ImpresaDTO> get() {
-		 return impresaRepository
-				 .findAll(isActive(true))
-				 .stream()
-				 .map(impresaDTOMapper)
-				 .collect(Collectors.toList());
+	private ResponseEntity<List<ImpresaDTO>> get() {
+		 var list =impresaRepository
+					 .findAll(isActive(true))
+					 .stream()
+					 .map(impresaDTOMapper)
+					 .collect(Collectors.toList());
+
+		 return ResponseEntity.ok(list);
 	}
 
 	@GetMapping("/{id}")
-	private ImpresaDTO getById(@PathVariable int id) {
+	private ResponseEntity<ImpresaDTO> getById(@PathVariable int id) {
 		var impresa = impresaRepository
 				.findById(id)
 				.orElseThrow(() -> new ImpresaNotFoundException(id));
 
-		return impresaDTOMapper.apply(impresa);
+		return ResponseEntity.ok(impresaDTOMapper.apply(impresa));
+	}
+
+	@PostMapping()
+	private ResponseEntity<String> post(@Valid @RequestBody Impresa impresa) {
+		return ResponseEntity.ok("Impresa is valid");
 	}
 
 }

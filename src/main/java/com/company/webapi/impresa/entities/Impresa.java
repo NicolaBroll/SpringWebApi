@@ -1,11 +1,11 @@
 package com.company.webapi.impresa.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
 
@@ -27,6 +27,10 @@ public class Impresa {
 			allocationSize = 1
 	)
 	private Integer id;
+
+	@NotBlank(message = "Name is mandatory")
+	private String stringa;
+
 	private Boolean isActive;
 
 	@OneToMany(
