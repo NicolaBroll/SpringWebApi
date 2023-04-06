@@ -1,5 +1,6 @@
-package com.company.webapi.impresa.dto;
+package com.company.webapi.impresa.mappers;
 
+import com.company.webapi.impresa.dtos.ImpresaDTO;
 import com.company.webapi.impresa.entities.Impresa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

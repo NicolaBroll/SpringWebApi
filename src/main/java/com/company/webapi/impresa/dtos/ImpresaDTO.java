@@ -1,4 +1,4 @@
-package com.company.webapi.impresa.dto;
+package com.company.webapi.impresa.dtos;
 
 import java.util.List;
 

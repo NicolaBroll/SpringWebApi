@@ -1,11 +1,11 @@
 package com.company.webapi.impresa;
 
-import com.company.webapi.impresa.dto.ImpresaDTO;
-import com.company.webapi.impresa.dto.ImpresaDTOMapper;
+import com.company.webapi.impresa.dtos.ImpresaDTO;
+import com.company.webapi.impresa.mappers.ImpresaDTOMapper;
+import com.company.webapi.impresa.exceptions.ImpresaNotFoundException;
+import org.springframework.web.bind.annotation.*;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import static com.company.webapi.impresa.SpecQuery.isActive;
 
 @RestController
+@ControllerAdvice
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/impresa")
 public class ImpresaController {
@@ -27,6 +28,15 @@ public class ImpresaController {
 				 .stream()
 				 .map(impresaDTOMapper)
 				 .collect(Collectors.toList());
+	}
+
+	@GetMapping("/{id}")
+	private ImpresaDTO getById(@PathVariable int id) {
+		var impresa = impresaRepository
+				.findById(id)
+				.orElseThrow(() -> new ImpresaNotFoundException(id));
+
+		return impresaDTOMapper.apply(impresa);
 	}
 
 }
