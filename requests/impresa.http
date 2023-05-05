@@ -3,3 +3,8 @@
 
 GET {{url}}/api/v1/impresa
 Authorization: Bearer {{token}}
+
+###
+
+GET {{url}}/api/v1/impresa/1
+Authorization: Bearer {{token}}
