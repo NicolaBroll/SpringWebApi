@@ -1,0 +1,6 @@
+@url=http://localhost:8080
+@tokenManager=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYW5hZ2VyQG1haWwuY29tIiwiaWF0IjoxNjgzMzA3NzIxLCJleHAiOjE2ODMzOTQxMjF9.h9PAuCRQhzI7M6cbiwthFnl9cGjEDWMEJqL4WcKRM8Q
+@tokenAdmin=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTY4MzMwNzcyMSwiZXhwIjoxNjgzMzk0MTIxfQ.NFJXHZYlrECuFLnN4IrR7biNrdn3dJZ8D7dq9yRIrdk
+
+GET {{url}}/api/v1/admin
+Authorization: Bearer {{tokenAdmin}}

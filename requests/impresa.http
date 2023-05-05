@@ -1,0 +1,5 @@
+@url=http://localhost:8080
+@token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYW5hZ2VyQG1haWwuY29tIiwiaWF0IjoxNjgzMzA3NzIxLCJleHAiOjE2ODMzOTQxMjF9.h9PAuCRQhzI7M6cbiwthFnl9cGjEDWMEJqL4WcKRM8Q
+
+GET {{url}}/api/v1/impresa
+Authorization: Bearer {{token}}
