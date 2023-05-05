@@ -17,7 +17,7 @@ public class ImpresaSeed {
         return args -> {
             List<Impresa> list = new ArrayList<>();
 
-            for(int n = 0; n < 50; n++) {
+            for(int n = 0; n < 2; n++) {
                 list.add(getImpresa());
             }
 

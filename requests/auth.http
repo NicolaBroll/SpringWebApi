@@ -1,0 +1,19 @@
+@url=http://localhost:8080
+
+POST {{url}}/api/v1/auth/authenticate
+Content-Type: application/json
+
+{
+    "email": "admin@mail.com",
+    "password": "password" 
+}
+
+###
+
+POST {{url}}/api/v1/auth/authenticate
+Content-Type: application/json
+
+{
+    "email": "manager@mail.com",
+    "password": "password" 
+}
