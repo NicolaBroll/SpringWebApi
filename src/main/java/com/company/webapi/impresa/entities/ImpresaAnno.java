@@ -20,8 +20,7 @@ public class ImpresaAnno {
 	)
 	@SequenceGenerator(
 			name = "impresaAnno_id_sequence",
-			sequenceName = "impresaAnno_id_sequence",
-			allocationSize = 1
+			sequenceName = "impresaAnno_id_sequence"
 	)
 	private Integer id;
 	private Integer anno;

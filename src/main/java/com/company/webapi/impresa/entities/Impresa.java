@@ -23,13 +23,9 @@ public class Impresa {
 	)
 	@SequenceGenerator(
 			name = "impresa_id_sequence",
-			sequenceName = "impresa_id_sequence",
-			allocationSize = 1
+			sequenceName = "impresa_id_sequence"
 	)
 	private Integer id;
-
-	@NotBlank(message = "Name is mandatory")
-	private String stringa;
 
 	private Boolean isActive;
 

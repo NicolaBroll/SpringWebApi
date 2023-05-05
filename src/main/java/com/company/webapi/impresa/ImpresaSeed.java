@@ -26,7 +26,7 @@ public class ImpresaSeed {
     }
 
     private Impresa getImpresa(){
-        return new Impresa(null, "aziz", true, Arrays.asList(
+        return new Impresa(null, true, Arrays.asList(
                 new ImpresaAnno(null, 2020, "Impresa"),
                 new ImpresaAnno(null, 2021, "Impresa"),
                 new ImpresaAnno(null, 2022, "Impresa"),

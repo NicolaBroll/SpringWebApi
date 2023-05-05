@@ -4,6 +4,7 @@ import com.company.webapi.impresa.dtos.ImpresaDTO;
 import com.company.webapi.impresa.entities.Impresa;
 import com.company.webapi.impresa.mappers.ImpresaDTOMapper;
 import com.company.webapi.impresa.exceptions.ImpresaNotFoundException;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import static com.company.webapi.impresa.SpecQuery.isActive;
 @RestController
 @ControllerAdvice
 @RequiredArgsConstructor
+@Tag(name = "Impresa")
 @RequestMapping("/api/v1/impresa")
 public class ImpresaController {
 
