@@ -29,10 +29,10 @@ public class ImpresaController {
  	@GetMapping()
 	private ResponseEntity<List<ImpresaDTO>> get() {
 		 var list =impresaRepository
-					 .findAll(isActive(true))
-					 .stream()
-					 .map(impresaDTOMapper)
-					 .collect(Collectors.toList());
+				 .findAllNew()
+				 .stream()
+				 .map(impresaDTOMapper)
+				 .collect(Collectors.toList());
 
 		 return ResponseEntity.ok(list);
 	}
