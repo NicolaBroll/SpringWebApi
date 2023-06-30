@@ -29,7 +29,7 @@ public class ImpresaController {
  	@GetMapping()
 	private ResponseEntity<List<ImpresaDTO>> get() {
 		 var list =impresaRepository
-				 .findAllNew()
+				 .findAllNew(SpecQuery.isActive(true))
 				 .stream()
 				 .map(impresaDTOMapper)
 				 .collect(Collectors.toList());
