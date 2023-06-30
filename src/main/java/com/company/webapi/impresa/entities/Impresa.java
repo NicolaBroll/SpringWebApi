@@ -16,7 +16,7 @@ import java.util.List;
 
 @NamedEntityGraph(
 		name = "impresa-entity-graph",
-		attributeNodes = @NamedAttributeNode("lstImpresaAnno")
+		attributeNodes = @NamedAttributeNode(Impresa_.LST_IMPRESA_ANNO)
 
 )
 public class Impresa {

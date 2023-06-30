@@ -1,6 +1,7 @@
 package com.company.webapi.impresa;
 import com.company.webapi.impresa.dtos.ImpresaFilterDTO;
 import com.company.webapi.impresa.entities.Impresa;
+import com.company.webapi.impresa.entities.Impresa_;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Objects;
@@ -21,7 +22,7 @@ public class SpecQuery{
                 return builder.conjunction();
             }
 
-            return builder.greaterThanOrEqualTo(root.get("isActive"), true);
+            return builder.equal(root.get(Impresa_.isActive), true);
         };
     }
 
