@@ -9,7 +9,9 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.List;
 
 public interface ImpresaRepository extends JpaRepository<Impresa, Integer>, JpaSpecificationExecutor<Impresa> {
-    @EntityGraph("impresa-entity-graph")
-    List<Impresa> findAll(Specification<Impresa> spec);
+   @EntityGraph("impresa-entity-graph")
+   List<Impresa> findByIsActive(Boolean isActive);
 
+   @EntityGraph("impresa-entity-graph")
+   List<Impresa> findAll(Specification<Impresa> specification);
 }

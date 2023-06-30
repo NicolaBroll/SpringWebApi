@@ -1,6 +1,7 @@
 package com.company.webapi.impresa;
 
 import com.company.webapi.impresa.dtos.ImpresaDTO;
+import com.company.webapi.impresa.dtos.ImpresaFilterDTO;
 import com.company.webapi.impresa.entities.Impresa;
 import com.company.webapi.impresa.mappers.ImpresaDTOMapper;
 import com.company.webapi.impresa.exceptions.ImpresaNotFoundException;
@@ -14,8 +15,6 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.company.webapi.impresa.SpecQuery.isActive;
-
 @RestController
 @ControllerAdvice
 @RequiredArgsConstructor
@@ -27,9 +26,11 @@ public class ImpresaController {
 	private final ImpresaDTOMapper impresaDTOMapper;
 
  	@GetMapping()
-	private ResponseEntity<List<ImpresaDTO>> get() {
+	private ResponseEntity<List<ImpresaDTO>> get(@RequestParam("onlyActive") Boolean onlyActive) {
+		 var impresaFilterDTO = new ImpresaFilterDTO(onlyActive);
+
 		 var list =impresaRepository
-				 .findAllNew(SpecQuery.isActive(true))
+				 .findAll(SpecQuery.createSpecification(impresaFilterDTO))
 				 .stream()
 				 .map(impresaDTOMapper)
 				 .collect(Collectors.toList());

@@ -13,11 +13,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+
 @NamedEntityGraph(
 		name = "impresa-entity-graph",
-		attributeNodes = {
-				@NamedAttributeNode("lstImpresaAnno")
-		}
+		attributeNodes = @NamedAttributeNode("lstImpresaAnno")
+
 )
 public class Impresa {
 

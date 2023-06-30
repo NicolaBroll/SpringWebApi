@@ -17,16 +17,16 @@ public class ImpresaSeed {
         return args -> {
             List<Impresa> list = new ArrayList<>();
 
-            for(int n = 0; n < 2; n++) {
-                list.add(getImpresa());
+            for(int n = 0; n < 10; n++) {
+                list.add(getImpresa((n % 2) == 0));
             }
 
             repository.saveAll(list);
         };
     }
 
-    private Impresa getImpresa(){
-        return new Impresa(null, true, Arrays.asList(
+    private Impresa getImpresa(Boolean isActive){
+        return new Impresa(null, isActive, Arrays.asList(
                 new ImpresaAnno(null, 2020, "Impresa"),
                 new ImpresaAnno(null, 2021, "Impresa"),
                 new ImpresaAnno(null, 2022, "Impresa"),
