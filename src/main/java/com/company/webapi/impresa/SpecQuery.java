@@ -22,7 +22,7 @@ public class SpecQuery{
                 return builder.conjunction();
             }
 
-            return builder.equal(root.get(Impresa_.isActive), true);
+            return builder.equal(root.get(Impresa_.IsDisattivata), true);
         };
     }
 

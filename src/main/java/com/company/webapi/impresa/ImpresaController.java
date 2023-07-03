@@ -3,11 +3,10 @@ package com.company.webapi.impresa;
 import com.company.webapi.impresa.dtos.ImpresaDTO;
 import com.company.webapi.impresa.dtos.ImpresaFilterDTO;
 import com.company.webapi.impresa.entities.Impresa;
-import com.company.webapi.impresa.mappers.ImpresaDTOMapper;
+import com.company.webapi.impresa.mappers.ImpresaMapper;
 import com.company.webapi.impresa.exceptions.ImpresaNotFoundException;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Null;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,14 +23,15 @@ import java.util.stream.Collectors;
 public class ImpresaController {
 
 	private final ImpresaRepository impresaRepository;
-	private final ImpresaDTOMapper impresaDTOMapper;
+	private final ImpresaMapper impresaDTOMapper;
 
  	@GetMapping()
 	private ResponseEntity<List<ImpresaDTO>> get(@RequestParam("onlyActive") Boolean onlyActive) {
 		 var impresaFilterDTO = new ImpresaFilterDTO(onlyActive);
 
-		 var list =impresaRepository
-				 .findAll(SpecQuery.createSpecification(impresaFilterDTO))
+		 var list = impresaRepository
+				 .findAll()
+//				 .findAll(SpecQuery.createSpecification(impresaFilterDTO))
 				 .stream()
 				 .map(impresaDTOMapper)
 				 .collect(Collectors.toList());

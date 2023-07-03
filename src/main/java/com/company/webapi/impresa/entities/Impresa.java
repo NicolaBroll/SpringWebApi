@@ -1,5 +1,6 @@
 package com.company.webapi.impresa.entities;
 
+import com.company.webapi.ditta.entities.Ditta;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,11 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 
-@NamedEntityGraph(
-		name = "impresa-entity-graph",
-		attributeNodes = @NamedAttributeNode(Impresa_.LST_IMPRESA_ANNO)
-
-)
+//@NamedEntityGraph(
+//		name = "impresa-entity-graph",
+//		attributeNodes = @NamedAttributeNode(Impresa_.LST_IMPRESA_ANNO)
+//
+//)
 public class Impresa {
 
 	@Id
@@ -32,15 +33,15 @@ public class Impresa {
 	)
 	private Integer id;
 
-	private Boolean isActive;
+	private Integer anno;
 
-	@OneToMany(
-			cascade = CascadeType.ALL,
-			orphanRemoval = true
-	)
-	@JoinColumn(
-			name = "impresa_id"
-	)
-	private List<ImpresaAnno> lstImpresaAnno;
+	private String ragioneSociale;
+
+	private Boolean IsDisattivata;
+
+	private String pivaCF;
+
+	@OneToMany(mappedBy="impresa")
+	private List<Ditta> lstDitte;
 
 }
