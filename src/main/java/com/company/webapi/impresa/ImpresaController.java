@@ -7,6 +7,7 @@ import com.company.webapi.impresa.mappers.ImpresaDTOMapper;
 import com.company.webapi.impresa.exceptions.ImpresaNotFoundException;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Null;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
