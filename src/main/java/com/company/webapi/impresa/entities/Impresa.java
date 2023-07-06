@@ -3,14 +3,9 @@ package com.company.webapi.impresa.entities;
 import com.company.webapi.ditta.entities.Ditta;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-//@NamedEntityGraph(
-//		name = "impresa-entity-graph",
-//		attributeNodes = @NamedAttributeNode(Impresa_.LST_IMPRESA_ANNO)
-//
-//)
 @Entity
 public class Impresa {
 
@@ -36,12 +31,12 @@ public class Impresa {
 	@OneToMany(
 			mappedBy = "impresa",
 			fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL
+			cascade = CascadeType.PERSIST
 	)
-	private Set<Ditta> lstDitte;
+	private List<Ditta> lstDitte;
 
 	public Impresa() {
-		this.lstDitte = new HashSet<Ditta>(){};
+		this.lstDitte = new ArrayList<Ditta>(){};
 	}
 
 	public Impresa(Integer anno, String ragioneSociale, Boolean isDisattivata, String pivaCF) {
@@ -51,7 +46,7 @@ public class Impresa {
 		this.pivaCF = pivaCF;
 
 
-		this.lstDitte = new HashSet<Ditta>(){};
+		this.lstDitte = new ArrayList<Ditta>(){};
 
 	}
 
@@ -63,47 +58,19 @@ public class Impresa {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public Integer getAnno() {
 		return anno;
-	}
-
-	public void setAnno(Integer anno) {
-		this.anno = anno;
 	}
 
 	public String getRagioneSociale() {
 		return ragioneSociale;
 	}
 
-	public void setRagioneSociale(String ragioneSociale) {
-		this.ragioneSociale = ragioneSociale;
-	}
-
 	public Boolean getIsDisattivata() {
 		return IsDisattivata;
 	}
 
-	public void setIsDisattivata(Boolean disattivata) {
-		IsDisattivata = disattivata;
-	}
-
 	public String getPivaCF() {
 		return pivaCF;
-	}
-
-	public void setPivaCF(String pivaCF) {
-		this.pivaCF = pivaCF;
-	}
-
-	public Set<Ditta> getLstDitte() {
-		return lstDitte;
-	}
-
-	public void setLstDitte(Set<Ditta> lstDitte) {
-		this.lstDitte = lstDitte;
 	}
 }

@@ -30,8 +30,7 @@ public class ImpresaController {
 		 var impresaFilterDTO = new ImpresaFilterDTO(onlyActive);
 
 		 var list = impresaRepository
-				 .findAll()
-//				 .findAll(SpecQuery.createSpecification(impresaFilterDTO))
+				 .findAll(SpecQuery.createSpecification(impresaFilterDTO))
 				 .stream()
 				 .map(impresaDTOMapper)
 				 .collect(Collectors.toList());

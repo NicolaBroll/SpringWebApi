@@ -16,20 +16,21 @@ public class ImpresaSeed {
     @Bean
     CommandLineRunner initDatabase(ImpresaRepository repository) {
         return args -> {
+            var lstImprese = new ArrayList<Impresa>();
 
             for(int n = 0; n < 10; n++) {
                 var anno = 2013 + n;
 
                 var impresa = new Impresa(anno, "Impresa " + n, false, "0000000000000000");
 
-                repository.save(impresa);
+                impresa.addDitta(new Ditta(anno, "Ditta 1", impresa));
+                impresa.addDitta(new Ditta(anno, "Ditta 2", impresa));
+                impresa.addDitta(new Ditta(anno, "Ditta 3", impresa));
 
-//                impresa.addDitta(new Ditta(anno, "Ditta 1"));
-//                impresa.addDitta(new Ditta(anno, "Ditta 2"));
-//                impresa.addDitta(new Ditta(anno, "Ditta 3"));
-//
-//                repository.save((impresa));
+                lstImprese.add((impresa));
             }
+
+            repository.saveAll(lstImprese);
         };
     }
 
