@@ -16,45 +16,21 @@ public class ImpresaSeed {
     @Bean
     CommandLineRunner initDatabase(ImpresaRepository repository) {
         return args -> {
-            var list = new ArrayList<Impresa>();
 
             for(int n = 0; n < 10; n++) {
-                list.add(getImpresa(n));
-            }
+                var anno = 2013 + n;
 
-            repository.saveAll(list);
+                var impresa = new Impresa(anno, "Impresa " + n, false, "0000000000000000");
+
+                repository.save(impresa);
+
+//                impresa.addDitta(new Ditta(anno, "Ditta 1"));
+//                impresa.addDitta(new Ditta(anno, "Ditta 2"));
+//                impresa.addDitta(new Ditta(anno, "Ditta 3"));
+//
+//                repository.save((impresa));
+            }
         };
     }
 
-    private static Impresa getImpresa(Integer n) {
-        var anno = 2013 + n;
-        var impresa = new Impresa();
-
-        impresa.setAnno(2020);
-        impresa.setRagioneSociale("Impresa " + n);
-        impresa.setIsDisattivata(false);
-        impresa.setPivaCF("0000000000000000");
-
-        var dittas = new ArrayList<Ditta>();
-
-        var ditta1 = new Ditta();
-        ditta1.setAnno(anno);
-        ditta1.setDenominazione("Ditta 1");
-
-        var ditta2 = new Ditta();
-        ditta2.setAnno(anno);
-        ditta2.setDenominazione("Ditta 2");
-
-        var ditta3 = new Ditta();
-        ditta3.setAnno(anno);
-        ditta3.setDenominazione("Ditta 2");
-
-        dittas.add(ditta1);
-        dittas.add(ditta2);
-        dittas.add(ditta3);
-
-        impresa.setLstDitte(dittas);
-
-        return impresa;
-    }
 }
