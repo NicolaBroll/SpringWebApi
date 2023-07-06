@@ -1,4 +1,6 @@
 #docker build --build-arg JAR_FILE=build/libs/*.jar -t myorg/myapp .
+#docker build -t myorg/myapp .
+
 
 # syntax=docker/dockerfile:experimental
 FROM eclipse-temurin:17-jdk-alpine AS build
