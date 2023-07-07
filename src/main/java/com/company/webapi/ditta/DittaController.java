@@ -1,8 +1,8 @@
 package com.company.webapi.ditta;
 
 import com.company.webapi.ditta.dtos.DittaDTO;
+import com.company.webapi.ditta.exceptions.DittaNotFoundException;
 import com.company.webapi.ditta.mappers.DittaMapper;
-import com.company.webapi.impresa.exceptions.ImpresaNotFoundException;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +37,7 @@ public class DittaController {
 	private ResponseEntity<DittaDTO> getById(@PathVariable int id) {
 		var impresa = dittaRepository
 				.findById(id)
-				.orElseThrow(() -> new ImpresaNotFoundException(id));
+				.orElseThrow(() -> new DittaNotFoundException(id));
 
 		return ResponseEntity.ok(dittaMapper.apply(impresa));
 	}
