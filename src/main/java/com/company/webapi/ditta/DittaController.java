@@ -1,8 +1,10 @@
 package com.company.webapi.ditta;
 
 import com.company.webapi.ditta.dtos.DittaDTO;
+import com.company.webapi.ditta.dtos.DittaFilterDTO;
 import com.company.webapi.ditta.exceptions.DittaNotFoundException;
 import com.company.webapi.ditta.mappers.DittaMapper;
+import com.company.webapi.impresa.dtos.ImpresaFilterDTO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +24,16 @@ public class DittaController {
 	private final DittaMapper dittaMapper;
 
  	@GetMapping()
-	private ResponseEntity<List<DittaDTO>> get() {
+	private ResponseEntity<List<DittaDTO>> get(
+			@RequestParam(value = "impresaId", required=false) Integer impresaId
+	) {
+		var dittaFilterDTO = new DittaFilterDTO(impresaId);
 
 		 var list = dittaRepository
-				 .findAll()
+				 .findAll(DittaSpecQuery.createSpecification(dittaFilterDTO))
 				 .stream()
 				 .map(dittaMapper)
-				 .collect(Collectors.toList());
+				 .toList();
 
 		 return ResponseEntity.ok(list);
 	}

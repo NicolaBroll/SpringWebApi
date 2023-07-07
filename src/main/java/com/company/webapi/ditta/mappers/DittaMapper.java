@@ -12,15 +12,13 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class DittaMapper implements Function<Ditta, DittaDTO> {
 
-    private final ImpresaMapper impresaDTOMapper;
-
     @Override
     public DittaDTO apply(Ditta ditta){
         return new DittaDTO(
                 ditta.getId(),
                 ditta.getAnno(),
-                ditta.getDenominazione(),
-                impresaDTOMapper.apply(ditta.getImpresa())
+                ditta.getDenominazione()
         );
     }
+
 }
