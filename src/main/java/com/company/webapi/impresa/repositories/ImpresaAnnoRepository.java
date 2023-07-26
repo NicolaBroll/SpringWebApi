@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface ImpresaAnnoRepository extends
         JpaRepository<ImpresaAnno, Integer>,
         JpaSpecificationExecutor<ImpresaAnno> {
+
     @EntityGraph("EG_impresaAnnoWithImpresa")
     List<ImpresaAnno> findAll(Specification<ImpresaAnno> specification);
 

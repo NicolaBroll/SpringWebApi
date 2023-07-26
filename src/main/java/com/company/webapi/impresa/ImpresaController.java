@@ -46,10 +46,5 @@ public class ImpresaController {
 
 		return ResponseEntity.ok(impresaDTOMapper.apply(impresaModel));
 	}
-//
-//	@PostMapping()
-//	private ResponseEntity<String> post(@Valid @RequestBody Impresa impresa) {
-//		return ResponseEntity.ok("Impresa is valid");
-//	}
 
 }
