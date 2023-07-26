@@ -24,13 +24,9 @@ public class DittaController {
 	private final DittaMapper dittaMapper;
 
  	@GetMapping()
-	private ResponseEntity<List<DittaDTO>> get(
-			@RequestParam(value = "impresaId", required=false) Integer impresaId
-	) {
-		var dittaFilterDTO = new DittaFilterDTO(impresaId);
-
+	private ResponseEntity<List<DittaDTO>> get() {
 		 var list = dittaRepository
-				 .findAll(DittaSpecQuery.createSpecification(dittaFilterDTO))
+				 .findAll()
 				 .stream()
 				 .map(dittaMapper)
 				 .toList();

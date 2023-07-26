@@ -1,11 +1,11 @@
 package com.company.webapi.ditta.entities;
 
-import com.company.webapi.impresa.entities.Impresa;
+import com.company.webapi.impresa.entities.ImpresaAnno;
 import jakarta.persistence.*;
 
 @NamedEntityGraph(
-		name = "ditta-impresa-entity-graph",
-		attributeNodes = @NamedAttributeNode(Ditta_.IMPRESA)
+		name = "ditta-impresaAnno-entity-graph",
+		attributeNodes = @NamedAttributeNode(Ditta_.IMPRESA_ANNO)
 )
 @Entity
 public class Ditta {
@@ -21,37 +21,28 @@ public class Ditta {
     )
     private Integer id;
 
-    private Integer anno;
-
     private String denominazione;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "impresa_id", nullable = false)
-    private Impresa impresa;
+    @JoinColumn(name = "impresaAnno_id", nullable = false)
+    private ImpresaAnno impresaAnno;
 
-    public Ditta() {
-    }
+    public Ditta() { }
 
-    public Ditta(Integer anno, String denominazione, Impresa impresa) {
-        this.anno = anno;
+    public Ditta(String denominazione, ImpresaAnno impresaAnno) {
         this.denominazione = denominazione;
-        this.impresa = impresa;
+        this.impresaAnno = impresaAnno;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public Integer getAnno() {
-        return anno;
-    }
-
     public String getDenominazione() {
         return denominazione;
     }
 
-    public Impresa getImpresa() {
-        return impresa;
+    public ImpresaAnno getImpresa() {
+        return impresaAnno;
     }
-
 }

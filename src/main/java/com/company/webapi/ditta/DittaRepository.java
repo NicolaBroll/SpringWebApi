@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.List;
 
 public interface DittaRepository extends JpaRepository<Ditta, Integer>, JpaSpecificationExecutor<Ditta> {
-    @EntityGraph("ditta-impresa-entity-graph")
+    @EntityGraph("ditta-impresaAnno-entity-graph")
     List<Ditta> findAll();
 
 //    List<Ditta> findByImpresa_Id(Integer id);

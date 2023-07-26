@@ -1,29 +1,31 @@
 package com.company.webapi.impresa;
+
 import com.company.webapi.impresa.dtos.ImpresaFilterDTO;
-import com.company.webapi.impresa.entities.Impresa;
-import com.company.webapi.impresa.entities.Impresa_;
+import com.company.webapi.impresa.entities.ImpresaAnno;
+import com.company.webapi.impresa.entities.ImpresaAnno_;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Objects;
 
 public class SpecQuery{
 
-    static Specification<Impresa> createSpecification(ImpresaFilterDTO filter){
-        return isActive(filter.getOnlyActive());
+    public static Specification<ImpresaAnno> createSpecification(ImpresaFilterDTO filter){
+        return filterAnno(filter.getAnno())
+                .and(impresaNotNull());
     }
 
-    private static Specification<Impresa> isActive(Boolean onlyActive) {
+    private static Specification<ImpresaAnno> filterAnno(Integer anno) {
         return (root, query, builder) -> {
-            if(Objects.isNull(onlyActive)){
+            if(Objects.isNull(anno)){
                 return builder.conjunction();
             }
 
-            if(!onlyActive){
-                return builder.conjunction();
-            }
-
-            return builder.equal(root.get(Impresa_.IsDisattivata), false);
+            return builder.equal(root.get(ImpresaAnno_.ANNO), anno);
         };
+    }
+
+    private static Specification<ImpresaAnno> impresaNotNull() {
+        return (root, query, builder) -> builder.isNotNull(root.get(ImpresaAnno_.IMPRESA));
     }
 
 }

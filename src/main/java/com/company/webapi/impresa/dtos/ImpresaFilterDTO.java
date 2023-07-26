@@ -9,5 +9,5 @@ import lombok.*;
 @Builder
 @ToString
 public class ImpresaFilterDTO {
-    private Boolean onlyActive;
+    private Integer anno;
 }

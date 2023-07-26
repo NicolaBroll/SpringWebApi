@@ -16,7 +16,6 @@ public class DittaMapper implements Function<Ditta, DittaDTO> {
     public DittaDTO apply(Ditta ditta){
         return new DittaDTO(
                 ditta.getId(),
-                ditta.getAnno(),
                 ditta.getDenominazione()
         );
     }

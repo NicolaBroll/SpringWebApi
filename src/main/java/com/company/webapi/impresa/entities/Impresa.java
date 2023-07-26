@@ -1,6 +1,5 @@
 package com.company.webapi.impresa.entities;
 
-import com.company.webapi.ditta.entities.Ditta;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -20,57 +19,37 @@ public class Impresa {
 	)
 	private Integer id;
 
-	private Integer anno;
-
-	private String ragioneSociale;
-
-	private Boolean IsDisattivata;
-
-	private String pivaCF;
+	private String chiave;
 
 	@OneToMany(
-			mappedBy = "impresa",
+			mappedBy = ImpresaAnno_.IMPRESA,
 			fetch = FetchType.LAZY,
 			cascade = CascadeType.PERSIST
 	)
-	private List<Ditta> lstDitte;
+	private List<ImpresaAnno> lstImpresaAnno;
 
 	public Impresa() {
-		this.lstDitte = new ArrayList<Ditta>(){};
+		this.lstImpresaAnno = new ArrayList<ImpresaAnno>();
 	}
 
-	public Impresa(Integer anno, String ragioneSociale, Boolean isDisattivata, String pivaCF) {
-		this.anno = anno;
-		this.ragioneSociale = ragioneSociale;
-		this.IsDisattivata = isDisattivata;
-		this.pivaCF = pivaCF;
-
-
-		this.lstDitte = new ArrayList<Ditta>(){};
-
+	public Impresa(String chiave) {
+		this.chiave = chiave;
+		this.lstImpresaAnno = new ArrayList<ImpresaAnno>();
 	}
 
-	public void addDitta(Ditta ditta) {
-		this.lstDitte.add((ditta));
+	public void addImpresaAnno(ImpresaAnno impresaAnno) {
+		this.lstImpresaAnno.add((impresaAnno));
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public Integer getAnno() {
-		return anno;
+	public String getChiave() {
+		return this.chiave;
 	}
 
-	public String getRagioneSociale() {
-		return ragioneSociale;
-	}
-
-	public Boolean getIsDisattivata() {
-		return IsDisattivata;
-	}
-
-	public String getPivaCF() {
-		return pivaCF;
+	public List<ImpresaAnno> getListaImpresaAnno() {
+		return this.lstImpresaAnno;
 	}
 }

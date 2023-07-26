@@ -4,4 +4,4 @@ import com.company.webapi.impresa.dtos.ImpresaDTO;
 
 import java.util.List;
 
-public record DittaDTO(Integer id, Integer anno, String denominazione){}
+public record DittaDTO(Integer id, String denominazione){}
