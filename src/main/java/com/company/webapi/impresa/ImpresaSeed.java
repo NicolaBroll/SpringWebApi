@@ -1,7 +1,7 @@
 package com.company.webapi.impresa;
 
 import com.company.webapi.ditta.entities.Ditta;
-import com.company.webapi.impresa.Repositories.ImpresaRepository;
+import com.company.webapi.impresa.repositories.ImpresaRepository;
 import com.company.webapi.impresa.entities.Impresa;
 import com.company.webapi.impresa.entities.ImpresaAnno;
 import org.springframework.boot.CommandLineRunner;

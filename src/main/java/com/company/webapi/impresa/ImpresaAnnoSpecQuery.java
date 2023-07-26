@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Objects;
 
-public class SpecQuery{
+public class ImpresaAnnoSpecQuery {
 
     public static Specification<ImpresaAnno> createSpecification(ImpresaFilterDTO filter){
         return filterAnno(filter.getAnno())

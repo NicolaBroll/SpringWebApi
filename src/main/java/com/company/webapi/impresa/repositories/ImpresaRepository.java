@@ -1,4 +1,4 @@
-package com.company.webapi.impresa.Repositories;
+package com.company.webapi.impresa.repositories;
 
 import com.company.webapi.impresa.entities.Impresa;
 import org.springframework.data.jpa.domain.Specification;
