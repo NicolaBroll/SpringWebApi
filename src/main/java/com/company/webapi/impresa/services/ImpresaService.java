@@ -1,15 +1,15 @@
 package com.company.webapi.impresa.services;
 
-import com.company.webapi.impresa.entities.ImpresaAnno;
-import com.company.webapi.impresa.exceptions.ImpresaNotFoundException;
-import com.company.webapi.impresa.repositories.ImpresaAnnoRepository;
 import com.company.webapi.impresa.ImpresaAnnoSpecQuery;
 import com.company.webapi.impresa.dtos.ImpresaFilterDTO;
+import com.company.webapi.impresa.entities.ImpresaAnno;
+import com.company.webapi.impresa.exceptions.ImpresaNotFoundException;
 import com.company.webapi.impresa.models.ImpresaModel;
+import com.company.webapi.impresa.repositories.*;
+import com.company.webapi.shared.PageResult;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ImpresaService {
@@ -20,22 +20,18 @@ public class ImpresaService {
         this.impresaAnnoRepository = impresaAnnoRepository;
     }
 
-    public List<ImpresaModel> GetAll(ImpresaFilterDTO impresaFilterDTO){
+    public PageResult<ImpresaModel> GetAll(ImpresaFilterDTO impresaFilterDTO){
         var result = new ArrayList<ImpresaModel>(){};
         var spec = ImpresaAnnoSpecQuery.createSpecification(impresaFilterDTO);
 
-        var lstImpresaAnno = this.impresaAnnoRepository.findAll(spec);
+        var lstImpresaAnno = this.impresaAnnoRepository.findAll(spec, impresaFilterDTO.getPageRequest());
 
-        if(lstImpresaAnno.isEmpty()){
-            return result;
-        }
-
-        for (var impresaAnno: lstImpresaAnno) {
+        for (var impresaAnno: lstImpresaAnno.getContent()) {
             var impresaModel = fromEntityToModel(impresaAnno);
             result.add((impresaModel));
         }
 
-        return result;
+        return PageResult.create(result, lstImpresaAnno.getTotalElements());
     }
 
     public ImpresaModel getById(Integer id){
