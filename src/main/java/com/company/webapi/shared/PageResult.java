@@ -1,10 +1,12 @@
 package com.company.webapi.shared;
 
+import lombok.Getter;
 import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class PageResult<T> {
 
     private final List<T> data;
@@ -16,22 +18,15 @@ public class PageResult<T> {
     }
 
     public static <T> PageResult<T> create(Page<T> page){
-        return new PageResult<T>(page.getContent(), page.getTotalElements());
+        return new PageResult<>(page.getContent(), page.getTotalElements());
     }
 
     public static <T> PageResult<T> create(List<T> list, Long totalCount){
-        return new PageResult<T>(list, totalCount);
+        return new PageResult<>(list, totalCount);
     }
 
-    public static <T> PageResult<T>  empty(){
-        return new PageResult<T>(new ArrayList<T>(), 0L);
+    public static <T> PageResult<T> empty(){
+        return new PageResult<>(new ArrayList<>(), 0L);
     }
 
-    public List<T> getData() {
-        return data;
-    }
-
-    public Long getTotalCount() {
-        return totalCount;
-    }
 }
