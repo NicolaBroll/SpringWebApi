@@ -7,13 +7,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ImpresaPageMapper implements Function<PageResult<ImpresaModel>, PageResult<ImpresaDTO>> {
+public class ImpresaDtoPageMapper implements Function<PageResult<ImpresaModel>, PageResult<ImpresaDTO>> {
 
-    private final ImpresaMapper impresaMapper;
+    private final ImpresaDtoMapper impresaDtoMapper;
 
     @Override
     public PageResult<ImpresaDTO> apply(PageResult<ImpresaModel> impresa){
@@ -21,7 +20,7 @@ public class ImpresaPageMapper implements Function<PageResult<ImpresaModel>, Pag
         var list = impresa
                 .getData()
                 .stream()
-                .map(impresaMapper)
+                .map(impresaDtoMapper)
                 .toList();
 
         return PageResult.create(list, impresa.getTotalCount());

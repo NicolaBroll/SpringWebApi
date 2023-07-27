@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 @Service
 @RequiredArgsConstructor
-public class ImpresaMapper implements Function<ImpresaModel, ImpresaDTO> {
+public class ImpresaDtoMapper implements Function<ImpresaModel, ImpresaDTO> {
 
     @Override
     public ImpresaDTO apply(ImpresaModel impresa){

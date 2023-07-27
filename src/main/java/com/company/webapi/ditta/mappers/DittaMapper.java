@@ -2,7 +2,6 @@ package com.company.webapi.ditta.mappers;
 
 import com.company.webapi.ditta.dtos.DittaDTO;
 import com.company.webapi.ditta.entities.Ditta;
-import com.company.webapi.impresa.mappers.ImpresaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
