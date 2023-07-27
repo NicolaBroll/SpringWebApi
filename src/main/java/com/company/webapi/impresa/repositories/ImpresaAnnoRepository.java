@@ -1,6 +1,7 @@
 package com.company.webapi.impresa.repositories;
 
 import com.company.webapi.impresa.entities.ImpresaAnno;
+import jakarta.annotation.Nonnull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -16,8 +17,9 @@ public interface ImpresaAnnoRepository extends
         PagingAndSortingRepository<ImpresaAnno, Integer>,
         JpaSpecificationExecutor<ImpresaAnno> {
 
+    @Nonnull
     @EntityGraph("EG_impresaAnnoWithImpresa")
-    Page<ImpresaAnno> findAll(Specification<ImpresaAnno> specification, Pageable pageable);
+    Page<ImpresaAnno> findAll(@Nonnull Specification<ImpresaAnno> specification, @Nonnull Pageable pageable);
 
     @EntityGraph("EG_impresaAnnoWithImpresa")
     Optional<ImpresaAnno> findById(Integer id);
